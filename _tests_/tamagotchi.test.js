@@ -36,7 +36,7 @@ describe('tamagotchi', () => {
   });
 
   test("energy decreases over time", () => {
-    jest.advanceTimersByTime(17001);
+    jest.advanceTimersByTime(21001);
     expect(reusableTam.energy).toEqual(7);
   });
 
