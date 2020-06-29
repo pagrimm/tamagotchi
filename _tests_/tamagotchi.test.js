@@ -53,18 +53,25 @@ describe('tamagotchi', () => {
     expect(damagedTam.health).toEqual(7);
   });
 
-  test("feeding increases food, up to 10", () => {
+  test("feeding increases food by 3, up to 10", () => {
     jest.advanceTimersByTime(30001);
     expect(reusableTam.food).toEqual(4);
-    reusableTam.feed()
+    reusableTam.feed();
     expect(reusableTam.food).toEqual(7);
   });
 
-  test("feeding increases happiness, up to 10", () => {
+  test("playing increases happiness by 2, up to 10", () => {
     jest.advanceTimersByTime(30001);
     expect(reusableTam.happiness).toEqual(7);
-    reusableTam.play()
+    reusableTam.play();
     expect(reusableTam.happiness).toEqual(9);
+  });
+
+  test("sleeping increases energy to 10", () => {
+    jest.advanceTimersByTime(30001);
+    expect(reusableTam.energy).toEqual(6);
+    reusableTam.sleep();
+    expect(reusableTam.energy).toEqual(10);
   });
 
 
