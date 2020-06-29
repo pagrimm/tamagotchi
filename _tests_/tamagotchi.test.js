@@ -78,12 +78,11 @@ describe('tamagotchi', () => {
     expect(reusableTam.alive).toEqual(true);
   });
 
-  //test("if health reaches 0, the tamagotchi dies and the game ends", () => {
-    //jest.advanceTimersByTime(30001);
-    //expect(reusableTam.energy).toEqual(6);
-    //reusableTam.sleep();
-    //expect(reusableTam.energy).toEqual(10);
-  //});
+  test("if health reaches 0, the tamagotchi dies", () => {
+    jest.advanceTimersByTime(80001);
+    expect(reusableTam.health).toEqual(0);
+    expect(reusableTam.alive).toEqual(false);
+  });
 
 
 });
