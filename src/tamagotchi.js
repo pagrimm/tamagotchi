@@ -67,6 +67,6 @@ export class Tamagotchi{
   }
 
   play(){
-    //this.happiness += 2;
+    this.happiness += 2;
   }
 }
