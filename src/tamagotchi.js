@@ -10,21 +10,33 @@ export class Tamagotchi{
   }
 
   foodDecay(){
-    setInterval(() => {this.food -= 1}, 5000);
+    setInterval(() => {
+      if (this.food > 0) {
+        this.food -= 1
+      }
+    }, 5000);
   }
 
   happyDecay(){
-    setInterval(() => {this.happiness -= 1}, 10000);
+    setInterval(() => {
+      if (this.happiness > 0) {
+        this.happiness -= 1
+      }
+    }, 10000);
   }
 
   energyDecay(){
-    setInterval(() => {this.energy -= 1}, 7000);
+    setInterval(() => {
+      if (this.energy > 0) {
+        this.energy -= 1
+      }
+    }, 7000);
   }
 
   healthDecay(){
     let healthDrain;
     setInterval(() => {
-      if (this.food <= 0 || this.happiness <= 0 || this.energy <= 0){
+      if (this.food === 0 || this.happiness === 0 || this.energy === 0){
         if (!healthDrain){
           healthDrain = setInterval(() => {this.health -= 1}, 3000)
         } 
@@ -33,5 +45,9 @@ export class Tamagotchi{
         healthDrain = undefined;
       }
     }, 1000)
+  }
+
+  healthRecovery(){
+    
   }
 }

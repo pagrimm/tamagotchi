@@ -19,11 +19,11 @@ _{detailed desc}_
 | happiness decreases over time |||
 | energy decreases over time |||
 | health decreases over time if food, happiness, OR energy = 0 |||
-| health increases over time if food, happiness, AND energy > 5|||
-| feeding increases food |||
-| playing increases happiness |||
-| sleeping increases energy |||
-| if health reaches 0, the tamagotchi dies and the game ends|||
+| health increases over time if food, happiness, AND energy > 5, up to 10 |||
+| feeding increases food, up to 10 |||
+| playing increases happiness, up to 10 |||
+| sleeping increases energy, up to 10 |||
+| if health reaches 0, the tamagotchi dies and the game ends |||
 
 
 ## Setup/Installation Requirements
