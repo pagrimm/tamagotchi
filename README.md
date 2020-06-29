@@ -1,26 +1,9 @@
-Get Started:
+#  _Tamagotchi_
 
-FIRST: [REMEMBER TO (1) CHANGE package.json PROJECT NAME AND DESCRIPTION TO CURRENT PROJECT NAME AND DESCRIPTION, (2) CHANGE TITLE OF HtmlWebpackPlugin IN webpack.config.js TO CURRENT PROJECT NAME, AND (3) CHANGE TITLE OF project-name.js IN SRC DIRECTORY TO NAME OF CURRENT PROJECT.]
-
-SECOND:
-  $ npm install
-  $ npm install dotenv-webpack --save-dev
-  $ git init
-  $ git add .gitignore
-  $ git commit -m "Activate .gitignore"
-  $ npm run build
-  $ git add .
-  $ git commit -m "Initial global commit"
-
-  $ npm run start (to initiate live server)
-
-
-#  _{title}_
-
-#### _{brief desc}_
-##### __Created:__ 5/29/2020
-##### __Last Updated:__ 6/3/2020 
-##### By _**Tyson Lackey**_  
+#### _Tamagotchi game where you monitor the changing stats of the tamagotchi pet and take actions to adjust them._
+##### __Created:__ 6/29/2020
+##### __Last Updated:__ 6/29/2020 
+##### By _**Tyson Lackey & Peter Grimm**_  
 
 
 ## Description
@@ -31,13 +14,17 @@ _{detailed desc}_
 
 | Spec| Example input | Example Output
 | ----------- | ----------- | ----------- |
-| Behavior | input | output |
-| Behavior | input | output |
-| Behavior | input | output |
-| Behavior | input | output |
-| Behavior | input | output |
-| Behavior | input | output |
-| Behavior | input | output |
+| Should have a user inputted name and [food, happiness, energy, health] all equal to 10 when object is created | name: "tamagotchi1" | Name: "tamagotchi1" stats: [food = 10, happiness = 10, energy = 10, health = 10] |
+| food decreases over time |||
+| happiness decreases over time |||
+| energy decreases over time |||
+| health decreases over time if food, happiness, OR energy = 0 |||
+| health increases over time if food, happiness, AND energy > 5|||
+| feeding increases food |||
+| playing increases happiness |||
+| sleeping increases energy |||
+| if health reaches 0, the tamagotchi dies and the game ends|||
+
 
 ## Setup/Installation Requirements
 
@@ -53,8 +40,8 @@ _{detailed desc}_
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Open via Bash/GitBash:
 
 1. Clone this repository onto your computer:
-    "git clone {github repo URL}"
-2. Navigate into the "{project name}" directory in Visual Studio Code or preferred text editor:
+    "git clone https://github.com/Lackeyt/tamagotchi"
+2. Navigate into the "tamagotchi" directory in Visual Studio Code or preferred text editor:
 3. Open the project
     "code ."
 4. Open your computer's terminal and navigate to the directory bearing the name of the program and containing the top level subdirectories and files.
