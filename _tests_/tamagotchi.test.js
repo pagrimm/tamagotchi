@@ -6,6 +6,10 @@ describe('tamagotchi', () => {
 
   beforeEach(() => {
     reusableTam = new Tamagotchi("TestName");
+    reusableTam.foodDecay();
+    //reusableTam.happyDecay();
+    //reusableTam.energyDecay();
+    //reusableTam.healthDecay();
   })
 
   afterEach(() => {

@@ -8,4 +8,8 @@ export class Tamagotchi{
     this.energy = 10;
     this.health = 10;
   }
+
+  foodDecay(){
+    setInterval(() => {this.food -= 1}, 5000);
+  }
 }
