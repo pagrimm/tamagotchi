@@ -74,5 +74,16 @@ describe('tamagotchi', () => {
     expect(reusableTam.energy).toEqual(10);
   });
 
+  test("created object should have an 'alive' property set to true", () => {
+    expect(reusableTam.alive).toEqual(true);
+  });
+
+  //test("if health reaches 0, the tamagotchi dies and the game ends", () => {
+    //jest.advanceTimersByTime(30001);
+    //expect(reusableTam.energy).toEqual(6);
+    //reusableTam.sleep();
+    //expect(reusableTam.energy).toEqual(10);
+  //});
+
 
 });
