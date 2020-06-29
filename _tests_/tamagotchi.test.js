@@ -8,12 +8,22 @@ describe('tamagotchi', () => {
     reusableTam = new Tamagotchi("TestName");
   })
 
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
   test("Should have a user inputted name and [food, happiness, energy, health] all equal to 10 when object is created", () => {
     expect(reusableTam.name).toEqual("TestName");
     expect(reusableTam.food).toEqual(10);
     expect(reusableTam.happiness).toEqual(10);
     expect(reusableTam.energy).toEqual(10);
     expect(reusableTam.health).toEqual(10);
+  });
+
+
+  test("food decreases over time", () => {
+    jest.advanceTimersByTime(15001);
+    expect(reusableTam.food).toEqual(7);
   });
 
 
