@@ -7,6 +7,7 @@ export class Tamagotchi{
     this.happiness = 10;
     this.energy = 10;
     this.health = 10;
+    this.alive = true;
   }
 
   foodDecay(){
