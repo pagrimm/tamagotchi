@@ -60,5 +60,12 @@ describe('tamagotchi', () => {
     expect(reusableTam.food).toEqual(7);
   });
 
+  test("feeding increases happiness, up to 10", () => {
+    jest.advanceTimersByTime(30001);
+    expect(reusableTam.happiness).toEqual(7);
+    reusableTam.play()
+    expect(reusableTam.happiness).toEqual(9);
+  });
+
 
 });

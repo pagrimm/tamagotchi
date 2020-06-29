@@ -65,4 +65,8 @@ export class Tamagotchi{
   feed(){
     this.food += 3;
   }
+
+  play(){
+    //this.happiness += 2;
+  }
 }
