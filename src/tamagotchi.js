@@ -11,8 +11,7 @@ export class Tamagotchi{
     this.foodTimer;
     this.happinessTimer;
     this.energyTimer;
-    this.healthCheckTimer;
-    this.healthDrainTimer;
+    this.healthModifierTimer;
     this.healthRecoverTimer;
     this.timerToggle(true);
   }
@@ -42,29 +41,25 @@ export class Tamagotchi{
         if (this.health === 0) {
           this.alive = false;
           this.timerToggle(false);
-          clearInterval(this.healthDrainTimer);
+          clearInterval(this.healthModifierTimer);
         } else if ((this.food === 0 || this.happiness === 0 || this.energy === 0)){
-          if (!this.healthDrainTimer) {
-            this.healthDrainTimer = setInterval(() => {this.health -= 1;}, 3000);
+          if (!this.healthModifierTimer) {
+            this.healthModifierTimer = setInterval(() => {this.health -= 1;}, 3000);
           }
         } else if (this.food >= 5 && this.happiness >= 5 && this.energy >= 5 && this.health < 10) {
-          if (!this.healthRecoverTimer){
+          if (!this.healthModifierTimer){
             this.health += 1;
-            this.healthRecoverTimer = setInterval(() => {this.health += 1;}, 3000);
+            this.healthModifierTimer = setInterval(() => {this.health += 1;}, 3000);
           }
         } else {
-          clearInterval(this.healthDrainTimer);
-          clearInterval(this.healthRecoverTimer);
-          this.healthDrainTimer = undefined;
-          this.healthRecoverTimer = undefined;
+          clearInterval(this.healthModifierTimer);
+          this.healthModifierTimer = undefined;
         }
       }, 1000);
     } else {
       clearInterval(this.healthCheckTimer);
-      clearInterval(this.healthDrainTimer);
-      clearInterval(this.healthRecoverTimer);
-      this.healthDrainTimer = undefined;
-      this.healthRecoverTimer = undefined;
+      clearInterval(this.healthModifierTimer);
+      this.healthModifierTimer = undefined;
     }
   }
 
