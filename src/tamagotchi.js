@@ -63,6 +63,6 @@ export class Tamagotchi{
   }
 
   feed(){
-    
+    this.food += 3;
   }
 }
