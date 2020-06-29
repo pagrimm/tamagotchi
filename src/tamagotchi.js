@@ -8,32 +8,32 @@ export class Tamagotchi{
     this.energy = 10;
     this.health = 10;
     this.alive = true;
+    this.foodTimer;
+    this.happinessTimer;
+    this.energyTimer;
+    this.healthCheckTimer;
+    this.timerToggle(true);
   }
 
-  foodDecay(){
-    setInterval(() => {
-      if (this.food > 0) {
-        this.food -= 1
-      }
-    }, 5000);
+  timerToggle(flag) {
+    this.resourceDecay(flag, "food", 5000);
+    this.resourceDecay(flag, "happiness", 10000);
+    this.resourceDecay(flag, "energy", 7000);
+    //this.healthCheckTimer(flag);
   }
 
-  happyDecay(){
-    setInterval(() => {
-      if (this.happiness > 0) {
-        this.happiness -= 1
-      }
-    }, 10000);
+  resourceDecay (flag, type, time) {
+    if (flag) {
+      this[type + "Timer"] = setInterval(() => {
+        if (this[type] > 0) {
+          this[type] -= 1
+        } 
+      }, time);
+    } else {
+      clearInterval(this[type + "Timer"]);
+    }
   }
-
-  energyDecay(){
-    setInterval(() => {
-      if (this.energy > 0) {
-        this.energy -= 1
-      }
-    }, 7000);
-  }
-
+  
   healthDecay(){
     let healthDrain;
     setInterval(() => {
