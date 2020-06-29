@@ -12,4 +12,8 @@ export class Tamagotchi{
   foodDecay(){
     setInterval(() => {this.food -= 1}, 5000);
   }
+
+  happyDecay(){
+    
+  }
 }

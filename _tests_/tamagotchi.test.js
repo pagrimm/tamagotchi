@@ -7,7 +7,7 @@ describe('tamagotchi', () => {
   beforeEach(() => {
     reusableTam = new Tamagotchi("TestName");
     reusableTam.foodDecay();
-    //reusableTam.happyDecay();
+    reusableTam.happyDecay();
     //reusableTam.energyDecay();
     //reusableTam.healthDecay();
   })
@@ -28,6 +28,11 @@ describe('tamagotchi', () => {
   test("food decreases over time", () => {
     jest.advanceTimersByTime(15001);
     expect(reusableTam.food).toEqual(7);
+  });
+
+  test("happiness decreases over time", () => {
+    jest.advanceTimersByTime(30001);
+    expect(reusableTam.happiness).toEqual(7);
   });
 
 
