@@ -45,11 +45,11 @@ describe('tamagotchi', () => {
     expect(reusableTam.health).toEqual(7);
   });
 
-  test("health increases over time if food, happiness, AND energy > 5", () => {
-    let damagedTam = new Tamagotchi("hurt")
-    damagedTam.health = 5
-    damagedTam.healthRecovery()
-    jest.advanceTimersByTime(6001);
+  test("health increases over time if food, happiness, AND energy > 5, up to 10", () => {
+    let damagedTam = new Tamagotchi("hurt");
+    damagedTam.health = 5;
+    damagedTam.healthRecovery();
+    jest.advanceTimersByTime(4001);
     expect(damagedTam.health).toEqual(7);
   });
 

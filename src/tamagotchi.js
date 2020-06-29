@@ -48,6 +48,17 @@ export class Tamagotchi{
   }
 
   healthRecovery(){
-    
+    let healthRecover;
+    setInterval(() => {
+      if ((this.food >= 5 || this.happiness >= 5 || this.energy >= 5) && this.health < 10){
+          if (!healthRecover){
+            this.health += 1
+            healthRecover = setInterval(() => {this.health += 1}, 3000)
+          }
+      } else {
+        clearInterval(healthRecover)
+        healthRecover = undefined;
+      }
+    }, 1000)
   }
 }
