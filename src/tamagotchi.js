@@ -71,6 +71,6 @@ export class Tamagotchi{
   }
 
   sleep(){
-    
+    this.energy += (10 - this.energy)
   }
 }
