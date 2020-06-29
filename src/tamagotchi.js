@@ -16,4 +16,8 @@ export class Tamagotchi{
   happyDecay(){
     setInterval(() => {this.happiness -= 1}, 10000);
   }
+
+  energyDecay(){
+    //setInterval(() => {this.happiness -= 1}, 10000);
+  }
 }
