@@ -12,6 +12,8 @@ export class Tamagotchi{
     this.happinessTimer;
     this.energyTimer;
     this.healthCheckTimer;
+    this.healthDrainTimer;
+    this.healthRecoverTimer;
     this.timerToggle(true);
   }
 
@@ -19,7 +21,7 @@ export class Tamagotchi{
     this.resourceDecay(flag, "food", 5000);
     this.resourceDecay(flag, "happiness", 10000);
     this.resourceDecay(flag, "energy", 7000);
-    //this.healthCheckTimer(flag);
+    this.healthCheck(flag);
   }
 
   resourceDecay (flag, type, time) {
@@ -33,38 +35,33 @@ export class Tamagotchi{
       clearInterval(this[type + "Timer"]);
     }
   }
-  
-  healthDecay(){
-    let healthDrain;
-    setInterval(() => {
-      if (this.food === 0 || this.happiness === 0 || this.energy === 0){
-        if (!healthDrain){
-          healthDrain = setInterval(() => {this.health -= 1}, 3000)
-        } else if (this.health === 0){
-          this.alive = false
-          clearInterval(healthDrain)
-          clearInterval()
-        } 
-      } else {
-        clearInterval(healthDrain)
-        healthDrain = undefined;
-      }
-    }, 1000)
-  }
 
-  healthRecovery(){
-    let healthRecover;
-    setInterval(() => {
-      if ((this.food >= 5 || this.happiness >= 5 || this.energy >= 5) && this.health < 10){
-          if (!healthRecover){
-            this.health += 1
-            healthRecover = setInterval(() => {this.health += 1}, 3000)
-          }
-      } else {
-        clearInterval(healthRecover)
-        healthRecover = undefined;
-      }
-    }, 1000)
+  healthCheck (flag) {
+    if (flag) {
+      this.healthCheckTimer = setInterval(() => {
+        if (this.health === 0) {
+          this.alive = false;
+          this.timerToggle(false);
+          clearInterval(this.healthDrainTimer);
+        } else if ((this.food === 0 || this.happiness === 0 || this.energy === 0)){
+          if (!this.healthDrainTimer) {
+            this.healthDrainTimer = setInterval(() => {this.health -= 1}, 3000)
+          };
+        } else if (this.food >= 5 && this.happiness >= 5 && this.energy >= 5 && this.health < 10) {
+          if (!this.healthRecoverTimer){
+            this.health += 1;
+            this.healthRecoverTimer = setInterval(() => {this.health += 1}, 3000)
+          };
+        } else {
+          clearInterval(this.healthDrainTimer);
+          clearInterval(this.healthRecoverTimer);
+          this.healthDrainTimer = undefined;
+          this.healthRecoverTimer = undefined;
+        }
+      }, 1000);
+    } else {
+      clearInterval(this.healthCheckTimer);
+    }
   }
 
   feed(){
