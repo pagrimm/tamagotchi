@@ -72,12 +72,12 @@ export class Tamagotchi{
   }
 
   sleep(){
-    this.timerToggle(false)
+    this.timerToggle(false);
     let energyRecovery = setInterval(() =>{
       if (this.energy < 10){
-        this.energy += 1
+        this.energy += 1;
       } else {
-        clearInterval(energyRecovery)
+        clearInterval(energyRecovery);
         this.timerToggle(true);
       }
     }, 500);
