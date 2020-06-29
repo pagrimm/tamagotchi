@@ -79,7 +79,7 @@ describe('tamagotchi', () => {
   });
 
   test("if health reaches 0, the tamagotchi dies", () => {
-    jest.advanceTimersByTime(80001);
+    jest.advanceTimersByTime(81001);
     expect(reusableTam.health).toEqual(0);
     expect(reusableTam.alive).toEqual(false);
   });

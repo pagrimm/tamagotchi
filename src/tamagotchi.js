@@ -40,6 +40,10 @@ export class Tamagotchi{
       if (this.food === 0 || this.happiness === 0 || this.energy === 0){
         if (!healthDrain){
           healthDrain = setInterval(() => {this.health -= 1}, 3000)
+        } else if (this.health === 0){
+          this.alive = false
+          clearInterval(healthDrain)
+          clearInterval()
         } 
       } else {
         clearInterval(healthDrain)
