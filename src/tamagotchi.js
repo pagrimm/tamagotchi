@@ -28,7 +28,7 @@ export class Tamagotchi{
     if (flag) {
       this[type + "Timer"] = setInterval(() => {
         if (this[type] > 0) {
-          this[type] -= 1
+          this[type] -= 1;
         } 
       }, time);
     } else {
@@ -45,13 +45,13 @@ export class Tamagotchi{
           clearInterval(this.healthDrainTimer);
         } else if ((this.food === 0 || this.happiness === 0 || this.energy === 0)){
           if (!this.healthDrainTimer) {
-            this.healthDrainTimer = setInterval(() => {this.health -= 1}, 3000)
-          };
+            this.healthDrainTimer = setInterval(() => {this.health -= 1;}, 3000);
+          }
         } else if (this.food >= 5 && this.happiness >= 5 && this.energy >= 5 && this.health < 10) {
           if (!this.healthRecoverTimer){
             this.health += 1;
-            this.healthRecoverTimer = setInterval(() => {this.health += 1}, 3000)
-          };
+            this.healthRecoverTimer = setInterval(() => {this.health += 1;}, 3000);
+          }
         } else {
           clearInterval(this.healthDrainTimer);
           clearInterval(this.healthRecoverTimer);
@@ -61,6 +61,10 @@ export class Tamagotchi{
       }, 1000);
     } else {
       clearInterval(this.healthCheckTimer);
+      clearInterval(this.healthDrainTimer);
+      clearInterval(this.healthRecoverTimer);
+      this.healthDrainTimer = undefined;
+      this.healthRecoverTimer = undefined;
     }
   }
 
@@ -73,6 +77,14 @@ export class Tamagotchi{
   }
 
   sleep(){
-    this.energy += (10 - this.energy)
+    this.timerToggle(false)
+    let energyRecovery = setInterval(() =>{
+      if (this.energy < 10){
+        this.energy += 1
+      } else {
+        clearInterval(energyRecovery)
+        this.timerToggle(true);
+      }
+    }, 500);
   }
 }

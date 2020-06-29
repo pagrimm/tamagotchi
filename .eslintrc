@@ -8,6 +8,7 @@
     "es6": true,
     "browser": true,
     "jquery": true,
+    "jest": true,
     "node": true
   },
   "rules": {
@@ -15,10 +16,5 @@
     "indent": ["warn", 2],
     "no-console": "warn",
     "no-debugger": "warn"
-  },
-  "globals": {
-    "describe": "readonly",
-    "test": "readonly",
-    "expect": "readonly"
   }
 }

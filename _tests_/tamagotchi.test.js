@@ -65,8 +65,19 @@ describe('tamagotchi', () => {
     jest.advanceTimersByTime(30001);
     expect(reusableTam.energy).toEqual(6);
     reusableTam.sleep();
+    jest.advanceTimersByTime(2001);
     expect(reusableTam.energy).toEqual(10);
   });
+
+  test("[health, food, happiness] do not change during sleep recovery", () =>{
+    jest.advanceTimersByTime(34000);
+    expect(reusableTam.energy).toEqual(6);
+    expect(reusableTam.food).toEqual(4);
+    reusableTam.sleep();
+    jest.advanceTimersByTime(2001);
+    expect(reusableTam.food).toEqual(4);
+    expect(reusableTam.energy).toEqual(10);
+  })
 
   test("created object should have an 'alive' property set to true", () => {
     expect(reusableTam.alive).toEqual(true);
@@ -77,4 +88,5 @@ describe('tamagotchi', () => {
     expect(reusableTam.health).toEqual(0);
     expect(reusableTam.alive).toEqual(false);
   });
+
 });
