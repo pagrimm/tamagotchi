@@ -20,4 +20,18 @@ export class Tamagotchi{
   energyDecay(){
     setInterval(() => {this.energy -= 1}, 7000);
   }
+
+  healthDecay(){
+    let healthDrain;
+    setInterval(() => {
+      if (this.food <= 0 || this.happiness <= 0 || this.energy <= 0){
+        if (!healthDrain){
+          healthDrain = setInterval(() => {this.health -= 1}, 3000)
+        } 
+      } else {
+        clearInterval(healthDrain)
+        healthDrain = undefined;
+      }
+    }, 1000)
+  }
 }

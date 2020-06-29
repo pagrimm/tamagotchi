@@ -40,14 +40,9 @@ describe('tamagotchi', () => {
     expect(reusableTam.energy).toEqual(7);
   });
 
-  test("energy decreases over time", () => {
-    jest.advanceTimersByTime(21001);
-    expect(reusableTam.energy).toEqual(7);
-  });
-
   test("health decreases over time if food, happiness, OR energy = 0", () => {
-    jest.advanceTimersByTime(56001);
-    expect(reusableTam.health).toEqual(8);
+    jest.advanceTimersByTime(59001);
+    expect(reusableTam.health).toEqual(7);
   });
 
 
