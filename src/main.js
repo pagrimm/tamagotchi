@@ -10,9 +10,8 @@ $(document).ready(function() {
   $("#newGame").submit(function(event){
     event.preventDefault();
     newGame.addTamagotchi($("#nameEntry").val());
-    $("#intro").hide();
     $("#gameBoard").show();
-    newTamaHTML(newGame.tamagotchis[0]);
+    newTamaHTML(newGame.tamagotchis[newGame.id-1]);
     updateTamaStats(newGame);
     setInterval(() => {
       updateTamaStats(newGame);
@@ -38,7 +37,7 @@ function addGiphy(id) {
   request.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       const response = JSON.parse(this.responseText);
-      $(`div.${id} .showRandomKitten`).first().append(`<img src="${response.data.images.downsized_large.url}">`);
+      $(`div.${id} .showRandomKitten`).first().html(`<img src="${response.data.images.fixed_height.url}">`);
     }
   };
   request.open("GET", url, true);
@@ -52,14 +51,21 @@ function updateTamaStats(gameObject){
     $(`div.${tamagotchi.id} .happiness`).html(`happiness: ${tamagotchi.happiness}`);
     $(`div.${tamagotchi.id} .energy`).html(`energy: ${tamagotchi.energy}`);
     $(`div.${tamagotchi.id} .health`).html(`health: ${tamagotchi.health}`);
+    if (!tamagotchi.alive) {
+      removeTamagotchi(tamagotchi.id)
+    }
   });
-  
+}
+
+function removeTamagotchi (id) {
+  $(`div.${id}`).remove();
 }
 
 function newTamaHTML(tamaObject){
-  $(".tamagotchi").clone().prependTo("#gameBoard");
+  $(".tamagotchi").last().clone().prependTo("#gameBoard");
   $(".tamagotchi").first().removeClass("hideTemplate");
   $(".tamagotchi").first().addClass(`${tamaObject.id}`);
+  $(".tamagotchi").first().addClass(`card`);
   addGiphy(tamaObject.id);
   addEventListeners(tamaObject);
 }

@@ -9,3 +9,9 @@ ul {
 .hideTemplate {
   display: none;
 }
+
+.card {
+  display: inline-block;
+  margin-top: 1rem;
+  text-align: center;
+}
