@@ -8,17 +8,26 @@
 <body>
   <div id="intro" class="container-fluid">
     <h1 class="jumbotron">TAMAGOTCHI</h1>
-    <button type="button" class="btn btn-secondary">New Game</button>
+    <form id="newGame">
+      <label for="nameEntry">Your First Tamagotchi's Name:</label>
+      <input id="nameEntry" type="text">
+      <button type="submit" class="btn btn-secondary">New Game</button>
+    </form>
   </div>
 
   <div id="gameBoard" class="container-fluid">
     <div class="tamagotchi">
+      <p class="name"></p>
       <div class="showRandomKitten"></div>
       <ul class="tamaStats">
         <li class="food"></li>
         <li class="happiness"></li>
         <li class="energy"></li>
+        <li class="health"></li>
       </ul>
+      <button type="button" class="feed">feed</button>
+      <button type="button" class="play">play</button>
+      <button type="button" class="sleep">sleep</button>
     </div>
   </div>
 </body>

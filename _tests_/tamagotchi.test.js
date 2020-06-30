@@ -1,4 +1,5 @@
 import {Tamagotchi} from '../src/tamagotchi.js';
+import {TamaGame} from '../src/tamagotchi.js';
 
 describe('tamagotchi', () => {
   let reusableTam;

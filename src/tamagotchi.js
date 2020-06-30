@@ -1,5 +1,19 @@
 //Business Logic
 
+export class TamaGame{
+  constructor(){
+    this.Tamagotchis = [];
+    this.id = 0;
+  }
+
+  addTamagotchi(name){
+    this.Tamagotchis.push(new Tamagotchi(name));
+    this.Tamagotchis[this.id].id = this.id;
+    this.id += 1;
+  }
+
+}
+
 export class Tamagotchi{
   constructor(name){
     this.name = name;
@@ -64,11 +78,19 @@ export class Tamagotchi{
   }
 
   feed(){
-    this.food += 3;
+    if (this.food < 7){
+      this.food += 3;
+    } else {
+      this.food = 10;
+    }
   }
 
   play(){
-    this.happiness += 2;
+    if (this.happiness < 8){
+      this.happiness += 2;
+    } else {
+      this.happiness = 10;
+    }
   }
 
   sleep(){
