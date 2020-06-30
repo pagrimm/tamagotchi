@@ -90,4 +90,10 @@ describe('tamagotchi', () => {
     expect(reusableTam.alive).toEqual(false);
   });
 
+  test("New tamagotchis are added to the game object and assigned an ID", () => {
+    const newGame = new TamaGame()
+    newGame.addTamagotchi("testName")
+    expect(newGame.tamagotchis[0].id).toEqual(0);
+  });
+
 });

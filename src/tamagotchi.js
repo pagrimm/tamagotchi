@@ -2,13 +2,13 @@
 
 export class TamaGame{
   constructor(){
-    this.Tamagotchis = [];
+    this.tamagotchis = [];
     this.id = 0;
   }
 
   addTamagotchi(name){
-    this.Tamagotchis.push(new Tamagotchi(name));
-    this.Tamagotchis[this.id].id = this.id;
+    this.tamagotchis.push(new Tamagotchi(name));
+    this.tamagotchis[this.id].id = this.id;
     this.id += 1;
   }
 
