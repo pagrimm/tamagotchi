@@ -5,3 +5,7 @@ ul {
 #gameBoard {
   display: none;
 }
+
+.hideTemplate {
+  display: none;
+}

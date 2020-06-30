@@ -2,58 +2,64 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from "jquery";
-import {Tamagotchi} from './tamagotchi.js';
+import {TamaGame} from './tamagotchi.js';
 
 $(document).ready(function() {
   //User Interface
-  addGiphy();
-  let tamagotchi;
+  let newGame = new TamaGame();
   $("#newGame").submit(function(event){
     event.preventDefault();
-    tamagotchi = new Tamagotchi($("#nameEntry").val());
+    newGame.addTamagotchi($("#nameEntry").val());
     $("#intro").hide();
     $("#gameBoard").show();
-    updateTamaStats(tamagotchi);
+    newTamaHTML(newGame.tamagotchis[0]);
+    updateTamaStats(newGame);
     setInterval(() => {
-      updateTamaStats(tamagotchi);
+      updateTamaStats(newGame);
     }, 500);
-  });
-  
-  $(".feed").click(function(){
-    tamagotchi.feed();
-  });
-
-  $(".play").click(function(){
-    tamagotchi.play();
-  });
-
-  $(".sleep").click(function(){
-    tamagotchi.sleep();
   });
 });
 
+function addEventListeners(object){
+  $(`div.${object.id} .feed`).click(function(){
+    object.feed();
+  });
+  $(`div.${object.id} .play`).click(function(){
+    object.play();
+  });
+  $(`div.${object.id} .sleep`).click(function(){
+    object.sleep();
+  });
+}
 
-
-function addGiphy() {
+function addGiphy(id) {
   let request = new XMLHttpRequest();
   const url = `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&tag=kitten&rating=g`;
-
   request.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
       const response = JSON.parse(this.responseText);
-      $(".showRandomKitten").first().append(`<img src="${response.data.images.downsized_large.url}">`);
+      $(`div.${id} .showRandomKitten`).first().append(`<img src="${response.data.images.downsized_large.url}">`);
     }
   };
-
   request.open("GET", url, true);
   request.send();
 }
 
-function updateTamaStats(tamagotchi){
-  $(".name").html(`${tamagotchi.name}`);
-  $(".food").html(`Food: ${tamagotchi.food}`);
-  $(".happiness").html(`happiness: ${tamagotchi.happiness}`);
-  $(".energy").html(`energy: ${tamagotchi.energy}`);
-  $(".health").html(`health: ${tamagotchi.health}`);
+function updateTamaStats(gameObject){
+  gameObject.tamagotchis.forEach((tamagotchi) => {
+    $(`div.${tamagotchi.id} .name`).html(`${tamagotchi.name}`);
+    $(`div.${tamagotchi.id} .food`).html(`Food: ${tamagotchi.food}`);
+    $(`div.${tamagotchi.id} .happiness`).html(`happiness: ${tamagotchi.happiness}`);
+    $(`div.${tamagotchi.id} .energy`).html(`energy: ${tamagotchi.energy}`);
+    $(`div.${tamagotchi.id} .health`).html(`health: ${tamagotchi.health}`);
+  });
+  
 }
 
+function newTamaHTML(tamaObject){
+  $(".tamagotchi").clone().prependTo("#gameBoard");
+  $(".tamagotchi").first().removeClass("hideTemplate");
+  $(".tamagotchi").first().addClass(`${tamaObject.id}`);
+  addGiphy(tamaObject.id);
+  addEventListeners(tamaObject);
+}
