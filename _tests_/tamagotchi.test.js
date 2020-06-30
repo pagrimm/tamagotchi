@@ -1,4 +1,5 @@
 import {Tamagotchi} from '../src/tamagotchi.js';
+import {TamaGame} from '../src/tamagotchi.js';
 
 describe('tamagotchi', () => {
   let reusableTam;
@@ -87,6 +88,12 @@ describe('tamagotchi', () => {
     jest.advanceTimersByTime(81001);
     expect(reusableTam.health).toEqual(0);
     expect(reusableTam.alive).toEqual(false);
+  });
+
+  test("New tamagotchis are added to the game object and assigned an ID", () => {
+    const newGame = new TamaGame()
+    newGame.addTamagotchi("testName")
+    expect(newGame.tamagotchis[0].id).toEqual(0);
   });
 
 });

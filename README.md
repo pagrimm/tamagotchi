@@ -24,6 +24,7 @@ _{detailed desc}_
 | playing increases happiness, up to 10 |||
 | sleeping increases energy, up to 10 |||
 | if health reaches 0, the tamagotchi dies and the game ends |||
+| New tamagotchis are added to the game object and assigned an ID |||
 
 
 ## Setup/Installation Requirements

@@ -1,0 +1,42 @@
+ul {
+  list-style-type: none;
+}
+
+#gameBoard {
+  display: none;
+}
+
+.hideTemplate {
+  display: none;
+}
+
+.card {
+  display: inline-block;
+  margin-top: 1rem;
+  text-align: center;
+  background-color: rgba(98, 0, 128, 0.5);
+  font-family: 'Notable', sans-serif;
+  color: whitesmoke
+}
+
+.jumbotron {
+  text-align: center;
+  background-color: rgba(98, 0, 128, 0.5);
+}
+
+body {
+  background-color: blueviolet;
+}
+
+h1 {
+  font-family: 'Notable', sans-serif;
+  color:linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+p.name {
+font-size:30px;
+}
+
+button {
+  background-color: rgb(242, 97, 255);
+}
