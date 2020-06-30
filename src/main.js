@@ -16,6 +16,7 @@ $(document).ready(function() {
     setInterval(() => {
       updateTamaStats(newGame);
     }, 500);
+    $("#nameEntry").val("");
   });
 });
 
@@ -46,7 +47,7 @@ function addGiphy(id) {
 
 function updateTamaStats(gameObject){
   gameObject.tamagotchis.forEach((tamagotchi) => {
-    $(`div.${tamagotchi.id} .name`).html(`${tamagotchi.name}`);
+    $(`div.${tamagotchi.id} .name`).html(`<strong>${tamagotchi.name}</strong>`);
     $(`div.${tamagotchi.id} .food`).html(`Food: ${tamagotchi.food}`);
     $(`div.${tamagotchi.id} .happiness`).html(`happiness: ${tamagotchi.happiness}`);
     $(`div.${tamagotchi.id} .energy`).html(`energy: ${tamagotchi.energy}`);
